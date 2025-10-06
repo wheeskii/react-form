@@ -1,28 +1,22 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize(
-    'notes_db',
+export const sequelize = new Sequelize(
+    'users_db',
     'root',
     'root', {
         dialect: 'mysql',
         host: 'localhost',
-        port: 8889
+        // port: 8889
+        // port: 3309
     }
 );
 
-const connectDB = async () => {
+export const connectDB = async () => {
     try {
-        await sequelize.authenticate();
-        console.log("Successfully connected to the database!")
-    }
-    catch(err) {
-        console.log(err);
-    }
-}
-
-const db = {
-    sequelize,
-    connectDB
+    await sequelize.authenticate();
+    console.log('MySQL connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+    throw error;
+  }
 };
-
-export default db;
