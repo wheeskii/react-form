@@ -1,5 +1,6 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+import db from "./config/db";
 
 const app = express();
 const port = 8000;
@@ -30,6 +31,7 @@ app.post('/api/form', (req: any, res: any) => {
 
 });
 
-app.listen(port, () => {
+app.listen(port, async () => {
     console.log(`Server is running on http://localhost:${port}`);
+    await db.connectDB();
 });
