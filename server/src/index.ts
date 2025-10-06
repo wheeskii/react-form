@@ -2,16 +2,19 @@ import express from 'express';
 import cors from 'cors';
 import db from "./config/db";
 import Task from './models/Task';
+import router from './routes/routes'
 
 const app = express();
 const port = 8000;
 
 app.use(cors());
 app.use(express.json());
+app.use('/api', router);
 
-// const submittedForms: any = [];
+app.get('/', (req: any, res: any) => {
+    res.status(200).json({ message: "Welcome to task API"})
+});
 
-// Syncing all models
 const syncDB = async () => {
     try {
         await Task.sync({ force: false });
@@ -23,25 +26,6 @@ const syncDB = async () => {
 }
 
 
-app.get('/api/form', (req: any, res: any) => {
-    //   res.json(submittedForms);
-});
-
-app.post('/api/form', (req: any, res: any) => {
-    const { name, email } = req.body;
-    
-    if(!name || !email) {
-        return res.status(400).json({ message: "Missing fields." });
-    }
-    
-    // submittedForms.push({ name, email})
-    
-    return res.status(200).json({ 
-        message: 'Form received', 
-        data: { name, email }
-    });
-    
-});
 
 syncDB().then(() => {
     app.listen(port, async () => {
