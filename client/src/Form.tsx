@@ -1,51 +1,62 @@
-import React from "react";
-import { useForm } from 'react-hook-form';
+// import React from "react";
+// import { useForm } from 'react-hook-form';
 import axios from "axios";
-import { error } from "console";
+import { useEffect, useState } from "react";
+// import { error } from "console";
 
-type FormData = {
-    name: string;
-    email: string;
-};
 
-const Form: React.FC = () => {
-    const { register, handleSubmit, formState: { errors} } = useForm<FormData>();
+// sample fetch
+interface Task {
+    id: number;
+    taskName: string;
+    content: string;
+    is_complete: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+}
 
-    const onSubmit = async (data: FormData) => {
-        try {
-            const response = await axios.post('http://localhost:8000/api/form', data);
-            alert(response.data.message);
-            // console.log(response.data)
-        } catch (error: any) {
-            alert(error.response?.data?.message || 'Error submitting form');
-        }
-    }
+
+function Display() {
+    
+    const [ task, setTask ] = useState<Task[]>([]);
+    // const [ content, setContent ] = useState("");
+
+    useEffect(() => {
+        const fetchData = async () => {
+            
+            const res = await axios.get('http://localhost:8000/api/form/');
+            setTask(res.data);
+            
+            
+        };
+
+        fetchData();
+    }, []);
+
+    // useEffect(() => {
+    //     axios.get('http://localhost:8000/api/form/Testing').then((res) => {
+    //         setContent(res.data.content);
+    //     })
+    // }, []);
+
 
     return (
+        <div className="container">
+            {task.length > 0 ? (
+                <div className="container">
+                    {task.map((task) => (
+                        <div key={task.id}>
+                        <h3>{task.taskName}</h3>
+                            <p>{task.content}</p>
+                            <p>{task.is_complete ? "Completed" : "Pending"}</p>
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <p>No data available.</p>
+            )}
+        </div>
+    );
+}
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-                <label>Name: </label>
-                <input {...register("name", {required: true})} />
-                {errors.name && <span>Name is required</span>}
-            </div>
-
-            <div>
-                <label>Email: </label>
-                <input {
-                    ...register("email", {
-                        required: true,
-                        pattern: /^\S+@\S+$/i
-                    })
-                }/>
-                {errors.email && <span>Valid email is required</span>}
-            </div>
-
-            <button type="submit">Submit</button>
-        </form>
-
-    )
-
-};
-
-export default Form;
+export default Display;
