@@ -22,7 +22,8 @@ export const User = sequelize.define("User", {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            is: /^[0-9+\-\s()]*$/, // Basic phone number format
+            // is: /^[0-9+\-\s()]*$/, 
+            is: /^\d{11}$/,
         },
   },
 });
