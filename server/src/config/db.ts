@@ -6,7 +6,7 @@ export const sequelize = new Sequelize(
     'root', {
         dialect: 'mysql',
         host: 'localhost',
-        // port: 8889
+        port: 8889
         // port: 3309
     }
 );

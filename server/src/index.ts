@@ -17,16 +17,13 @@ app.get('/', (req, res) => {
 
 const startServer = async () => {
     try {
-        // ✅ Step 1: Connect to DB
         await connectDB();
         console.log('Database connected');
 
-        // ✅ Step 2: Sync all models (you can use sequelize.sync() too)
         await sequelize.sync({ force: false });
- // or sequelize.sync()
+
         console.log('Database synced!');
 
-        // ✅ Step 3: Start server
         app.listen(port, () => {
             console.log(`Server is running on http://localhost:${port}`);
         });

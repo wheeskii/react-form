@@ -19,14 +19,15 @@ form {
   font-family: Arial, sans-serif;
 }
 
-form div {
-  margin-bottom: 1.25rem;
-}
+/* form div {
+  
+} */
 
 label {
   display: block;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  
+  padding: 0.5rem 0;
   color: #333;
 }
 
@@ -40,13 +41,29 @@ input {
 }
 
 p {
-  margin-top: 0.25rem;
+  text-align: right;
+  /* margin-top: 0.25rem; */
   color: #d93025; /* error red */
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+}
+
+.entry {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center; 
+  /* gap: 10px;  */
+}
+
+.entry p,
+.entry label {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 button {
   padding: 0.6rem 1.2rem;
+  /* margin-top: 1.2rem; */
   background-color: #007bff;
   border: none;
   color: white;
@@ -54,6 +71,10 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
+}
+
+button[type="submit"] {
+  margin-top: 1.2rem;
 }
 
 button:hover {

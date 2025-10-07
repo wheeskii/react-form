@@ -4,7 +4,7 @@ import '../styles/NavBar.css';
 
 export const Navbar = () => (
   <nav className="navbar">
-    <h2>User App</h2>
+    <h2>User API</h2>
     <div>
       <Link to="/users">Users</Link>
       <Link to="/create">Create User</Link>

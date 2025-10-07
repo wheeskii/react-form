@@ -43,21 +43,29 @@ export const UserForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="form-container">
       <h2>{id ? 'Edit User' : 'Create User'}</h2>
 
-      <label>Name</label>
-      <input {...register("name", { required: "Name is required" })} />
-      {errors.name && <p>{errors.name.message}</p>}
+      <div className="entry">
+        <label>Name</label>
+        {errors.name && <p>{errors.name.message}</p>}
+      </div>
+        <input {...register("name", { required: "Name is required" })} />
 
-      <label>Email</label>
-      <input type="email" {...register("email", { required: "Email is required" })} />
-      {errors.email && <p>{errors.email.message}</p>}
+      <div className="entry">
+        <label>Email</label>
+        {errors.email && <p>{errors.email.message}</p>}
+      </div>
+        <input type="email" {...register("email", { required: "Email is required" })} />
 
-      <label>Birthdate</label>
-      <input type="date" {...register("birthdate", { required: "Birthdate is required" })} />
-      {errors.birthdate && <p>{errors.birthdate.message}</p>}
+      <div className="entry">
+        <label>Birthdate</label>
+        {errors.birthdate && <p>{errors.birthdate.message}</p>}
+      </div>
+        <input type="date" {...register("birthdate", { required: "Birthdate is required" })} />
 
-      <label>Phone Number</label>
-      <input type="tel" {...register("phoneNumber", { required: "Phone number is required" })} />
-      {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
+      <div className="entry">
+        <label>Phone Number</label>
+        {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
+      </div>
+        <input type="tel" {...register("phoneNumber", { required: "Phone number is required" })} />
 
       <button type="submit">{id ? 'Update' : 'Create'} User</button>
     </form>
