@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../styles/UserList.css'
+import '../styles/UserList.css';
 
 type User = {
   id: number;
@@ -9,6 +9,8 @@ type User = {
   email: string;
   birthdate: string;
   phoneNumber: string;
+  course: string;
+  graduated: boolean
 };
 
 export const UserList = () => {
@@ -44,16 +46,20 @@ export const UserList = () => {
           <th>Email</th>
           <th>Birthdate</th>
           <th>Phone</th>
+          <th>Course</th>
+          {/* <th>Graduated</th> */}
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         {users.map((u) => (
-          <tr key={u.id}>
+          
+          <tr key={u.id} className={u.graduated ? 'graduated' : 'studying'}>
             <td>{u.name}</td>
             <td>{u.email}</td>
             <td>{u.birthdate}</td>
             <td>{u.phoneNumber}</td>
+            <td>{u.course}</td>
             <td>
               <div className="action-buttons">
                 <Link to={`/edit/${u.id}`}>Edit</Link>
