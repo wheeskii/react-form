@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import {userDataSchema} from '../../../server/src/schema/User';
 import { useNavigate, useParams } from 'react-router-dom';
-import '../styles/Form.css'
+import z from 'zod';
+import '../styles/Form.css';
 
-type FormData = {
-  name: string;
-  email: string;
-  birthdate: string;
-  phoneNumber: string;
-};
 
 export const UserForm = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm< z.infer<typeof userDataSchema>>();
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
 
@@ -24,7 +20,8 @@ export const UserForm = () => {
     }
   }, [id, reset]);
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: z.infer<typeof userDataSchema>) => {
+    console.log("Form data:", data);
     try {
       if (id) {
         await axios.put(`http://localhost:8000/api/users/${id}`, data);
@@ -35,7 +32,7 @@ export const UserForm = () => {
       }
       navigate("/users");
     } catch (err: any) {
-      alert("Error submitting form");
+      alert(err);
     }
   };
 
@@ -66,6 +63,15 @@ export const UserForm = () => {
         {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
       </div>
         <input type="tel" {...register("phoneNumber", { required: "Phone number is required" })} />
+
+      <div className="entry">
+        <label>Course</label>
+        {/* {errors.course && <p>{errors.course.message}</p>} */}
+      </div>
+      <select id="courses"{...register("course")} >
+        <option value="Information Technology">Information Technology</option>
+        <option value="Computer Science">Computer Science</option>
+      </select> 
 
       <button type="submit">{id ? 'Update' : 'Create'} User</button>
     </form>
