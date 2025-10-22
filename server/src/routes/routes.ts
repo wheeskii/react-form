@@ -1,7 +1,19 @@
 import express from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { User } from '../models/User';
+import { ZodSchema } from 'zod';
+import { userDataSchema } from '../schema/User';
 
 const router = express.Router();
+const validate = (schema: ZodSchema) => 
+(req: Request, res: Response, next: NextFunction) => {
+  try {
+    schema.parse(req.body);
+    next();
+  } catch (err: any) {
+    return res.status(400).json({ errors: err.errors })
+  }
+}
 
 router.get('/users', async (req, res) => {
   try {
@@ -23,7 +35,7 @@ router.get('/users/:id', async (req, res) => {
 });
 
 
-router.post('/users', async (req, res) => {
+router.post('/users', validate(userDataSchema), async (req, res) => {
   try {
     const user = await User.create(req.body);
     res.status(201).json(user);
@@ -32,7 +44,7 @@ router.post('/users', async (req, res) => {
   }
 });
 
-router.put('/users/:id', async (req, res) => {
+router.put('/users/:id', validate(userDataSchema), async (req, res) => {
   try {
     const [updated] = await User.update(req.body, {
       where: { id: req.params.id }

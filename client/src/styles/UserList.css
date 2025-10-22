@@ -29,7 +29,15 @@
   color: #444;
 }
 
-.user-table tr:hover {
+/* .graduated {
+  background-color: ;
+} */
+
+/* .studying {
+  background-color: darkgreen;
+} */
+
+.graduated:hover {
   background-color: #f9f9f9;
 }
 

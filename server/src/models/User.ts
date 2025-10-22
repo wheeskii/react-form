@@ -1,29 +1,33 @@
 import { sequelize } from "../config/db";
 import { DataTypes } from "sequelize";
 
+// models/User.ts
 export const User = sequelize.define("User", {
-    name: {
+    name: { 
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false 
     },
     email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
+        type: DataTypes.STRING, 
+        allowNull: false, 
+        unique: true, 
         validate: {
-            isEmail: true,
-        },
-    }, 
-    birthdate: {
+            isEmail: true 
+        }},
+    birthdate: { 
         type: DataTypes.DATEONLY,
-        allowNull: false,
+        allowNull: false 
     },
     phoneNumber: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            // is: /^[0-9+\-\s()]*$/, 
-            is: /^\d{11}$/,
-        },
-  },
-});
+            is: /^\d{11}$/
+        }},
+    course: {
+        type: DataTypes.ENUM("Information Technology", "Computer Science"),
+        allowNull: false 
+    },
+    
+  });
+  
