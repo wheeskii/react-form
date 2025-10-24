@@ -6,20 +6,12 @@ import "datatables.net";
 import "datatables.net-dt";
 import "datatables.net-responsive-dt";
 import '../styles/UserList.style.css'
-// import "/node_modules/datatables.net-dt/css/jquery.dataTables.css";
-// import "/node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css";
 
 
 export const UserList = () => {
   const [users, setUsers] = useState<UserType[]>([]);
   const tableRef = useRef<HTMLTableElement>(null);
 
-  // useEffect(() => {
-  //   getAllUsers()
-  //   .then(setUsers)
-  //   .catch(console.error)
-    
-  // }, []);
   useEffect(() => {
     getAllUsers()
       .then((data) => {
@@ -49,15 +41,7 @@ export const UserList = () => {
   return (
 
     <>
-    {/* <div>
-      { users.map((user) => (
-        <div key={ user.id }>
-          <h4>{ user.lastName }, { user.firstName }</h4>
-        </div>
-      ))}
-    </div> */}
-
-<div className="user-table">
+    <div className="user-table">
       <table
         ref={tableRef}
         className="display nowrap"
@@ -70,7 +54,6 @@ export const UserList = () => {
             <th>Birthdate</th>
             <th>Phone Number</th>
             <th>Email</th>
-            
             <th>Course</th>
           </tr>
         </thead>
@@ -91,6 +74,5 @@ export const UserList = () => {
       </table>
     </div>
     </>
-
   )
 }
