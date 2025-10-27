@@ -14,7 +14,6 @@ function App() {
       <Routes>
         <Route path='/users' element={<UserList />} />
         {/* <Route path='/create' element={<UserForm />} /> */}
-        
       </Routes>
     </Router>
 
