@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { AppDataSource } from "./data/db.dataSource";
 import router from "./routes/user.routes";
+import cookieParser from 'cookie-parser';
 
 // app.get('/', (req, res) => {
 //     res.status(200).json({ message: "Welcome to users API!"})
@@ -17,6 +18,7 @@ AppDataSource.initialize()
     
     app.use(cors());
     app.use(express.json());
+    app.use(cookieParser());
     app.use('/api', router);
 
     app.listen(port, () => {
