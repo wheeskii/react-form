@@ -11,10 +11,10 @@ const courses = Object.values(Course) as [string, ...string[]];
 
 export const userSchema = z.object({
     id: z.number().optional(),
-    lastName: z.string().min(1, "Required!"),
-    firstName: z.string().min(1, "Required!"),
-    middleName: z.string().min(1, "Required!"),
-    email: z.email("Invalid email address!"),
+    lastName: z.string().min(1, "Last name is required!"),
+    firstName: z.string().min(1, "First name is required!"),
+    middleName: z.string().optional(),
+    email: z.email("Please enter a valid email address!"),
     birthdate: z.coerce.date(),
     phoneNumber: z.string().regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
     course: z.enum(courses, "Please choose between [Computer Science] [Information Technology]"),
