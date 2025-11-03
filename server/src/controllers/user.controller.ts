@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "../entities/user.entity";
 import { AppDataSource } from "../data/db.dataSource";
-import { userSchema, userUpdateSchema } from "../validator/user.validator";
-
 
 const userRepo = AppDataSource.getRepository(User);
 
@@ -14,7 +12,10 @@ export const addNewUser = async(req: Request, res: Response) => {
 
         res.status(201).json(newUser);
     } catch (error) {
-        res.status(500).json({ message: "Error creating new user: ", error})
+        res.status(500).json({
+            success: false,
+            message: "Error creating new user: ", error
+        })
     }
 }
 
@@ -27,11 +28,11 @@ export const getAllUsers = async (req: Request, res: Response) => {
         
         res.status(200).json({ users });
 
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        console.error(error);
         return res.status(500).json({
             success: false,
-            message: "Server error",
+            message: "Error getting all users: ", error,
         });
     }
 }
@@ -60,7 +61,7 @@ export const updateUser = async (req: Request, res: Response) => {
         console.error("Update error: ");
         return res.status(500).json({
             success: false,
-            message: "Server error",
+            message: "Error updating user: ", error
         });
     }
 };
@@ -78,12 +79,12 @@ export const getUserByID = async (req: Request, res: Response) => {
         
         res.status(200).json({ user });
 
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        console.error(error);
         return res.status(500).json({
             success: false,
-            message: "Server error",
-        });
+            message: "Error getting user by ID: ", error
+        })
     }
 }
 
@@ -105,7 +106,7 @@ export const deleteUserByID = async (req: Request, res: Response) => {
         console.error("Delete error: ", error);
         return res.status(500).json({
             success: false,
-            message: "Server error",
+            message: "Error delete user: ", error
         });
     }
 }
