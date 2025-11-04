@@ -14,6 +14,8 @@ export const LoginPage = () => {
 
     const onSubmit = async (data: LoginType) => {
         try {
+            
+            // const user = await loginUser(data.email, navigate)
             const user = await loginUser(data.email)
             console.log("Logged in user:", user);
             navigate("/users");
@@ -24,17 +26,17 @@ export const LoginPage = () => {
     }
 
     return (
-        <div className="user-login">
-            <h2 className="heading">Sign in</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        
+        <form onSubmit={handleSubmit(onSubmit)} className="form-container">
+                <h2 className="heading">Sign in</h2>
 
                 {errors.email && <p className="login-validation">{errors.email.message}</p>}
-                <input {...register("email")} placeholder="Email"/>
+                <input type="email" {...register("email")} placeholder="Email"/>
                 
                 <button type="submit">Sign in</button>
 
             </form>
-        </div>
+        
     )
     
 };
