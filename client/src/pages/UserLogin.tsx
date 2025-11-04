@@ -4,6 +4,7 @@ import { loginSchema } from "../validator/login.validation";
 import type { LoginType } from "../validator/login.validation";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/authentication.api";
+import '../styles/UserLogin.styles.css';
 
 export const LoginPage = () => {
     const navigate = useNavigate();
@@ -18,19 +19,22 @@ export const LoginPage = () => {
             navigate("/users");
           } catch (error: any) {
             console.error("Login failed:", error);
-            alert("Invalid email or password");
+            alert("Invalid email");
           }
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="user-login">
+            <h2 className="heading">Sign in</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
 
-            <input {...register("email")} placeholder="Email"/>
-            {errors.email && <p className="login-validation">{errors.email.message}</p>}
+                {errors.email && <p className="login-validation">{errors.email.message}</p>}
+                <input {...register("email")} placeholder="Email"/>
+                
+                <button type="submit">Sign in</button>
 
-            <button type="submit">Login</button>
-
-        </form>
+            </form>
+        </div>
     )
     
 };
