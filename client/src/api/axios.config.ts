@@ -3,8 +3,8 @@ import axios from 'axios';
 
 export const isTokenExpired = (): boolean => {
   const expiry = localStorage.getItem("tokenExpiry");
-  console.log(expiry);
-  if (!expiry) return true; // no token = expired
+  // console.log(expiry);
+  if (!expiry) return true; 
   return Date.now() > Number(expiry);
 };
 
@@ -20,9 +20,10 @@ axiosInstance.interceptors.request.use(
     const token = localStorage.getItem("accessToken");
     
     if (token && !isTokenExpired()) {
+      // if token exists and not expired
       config.headers.Authorization = `Bearer ${token}`;
     } else {
-      console.log("Access token expired!");
+      // console.log("Access token expired!");
       localStorage.clear();
 
     }
