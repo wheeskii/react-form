@@ -19,8 +19,6 @@ export const UserList = () => {
       })
       .catch(console.error);
     }, []);
-    
-  console.log(users);
   
   
   return (
