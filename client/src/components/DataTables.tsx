@@ -1,7 +1,7 @@
 import { DataGrid } from '@mui/x-data-grid';
 import type { GridColDef } from '@mui/x-data-grid';
 import { Paper } from '@mui/material';
-import { OutlinedButton } from './Button';
+import { ContainedButton } from './Button';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: "ID", width: 70 },
@@ -11,8 +11,8 @@ const columns: GridColDef[] = [
   { field: 'birthdate', headerName: "Birth Date", width: 150 },
   { field: 'email', headerName: "Email", width: 200 },
   { field: 'course', headerName: "Course", width: 200},
-  { field: "edit", headerName: "Edit", width: 100, renderCell: () => <OutlinedButton>Edit</OutlinedButton> }, 
-  { field: "delete", headerName: "Delete", width: 150, renderCell: () => <OutlinedButton>Delete</OutlinedButton>} 
+  { field: "edit", headerName: "Edit", width: 100, renderCell: () => <ContainedButton>Edit</ContainedButton> }, 
+  { field: "delete", headerName: "Delete", width: 150, renderCell: () => <ContainedButton>Delete</ContainedButton>} 
 ];
 
 const paginationModel = { page: 0, pageSize: 5 };
