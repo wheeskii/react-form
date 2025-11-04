@@ -39,7 +39,7 @@ export const signinUser = async (req: Request, res: Response) => {
         const accessToken = jwt.sign(
             { email: user.email },
             SECRET_KEY,
-            { expiresIn: "5m" } 
+            { expiresIn: "60s" } 
           );
         
         // longer access
