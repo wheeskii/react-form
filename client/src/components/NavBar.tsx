@@ -4,7 +4,8 @@ import "../styles/NavBar.style.css";
 export const NavBar = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("accessToken");
-
+  // const expiry = localStorage.getItem("tokenExpiry");
+  // console.log(token);
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     navigate("/signin");
