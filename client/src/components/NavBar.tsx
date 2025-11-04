@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-// import CustomButton from "./Button";
-import "../styles/NavBar.style.css";
 import { LogoutButton } from "./Button";
+import "../styles/NavBar.style.css";
 
 export const NavBar = () => {
   const navigate = useNavigate();
@@ -12,12 +11,11 @@ export const NavBar = () => {
     navigate("/login");
   };
 
-  
-
   return (
     <nav className="navbar">
       <div className="navbar-title">
-        <h2>USER API</h2>
+        
+        <h2><Link to={token ? '/users' : '/'}>USERS API</Link></h2>
       </div>
 
       <div className="navbar-links">
@@ -26,11 +24,11 @@ export const NavBar = () => {
             <Link to="/users">Users</Link>
             <Link to="/create">Create User</Link>
     
-            <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
+            <button onClick={handleLogout}>Signout</button>
             
           </>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link to="/login">Signin</Link>
         )}
       </div>
     </nav>
