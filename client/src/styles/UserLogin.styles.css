@@ -1,0 +1,52 @@
+.user-login {
+    margin: 0 auto;
+    margin-top: 2rem;
+    background-color: #fdfdfd;
+    padding: 1rem;
+    max-width: fit-content;
+    box-shadow: 12px 10px 3px -6px rgba(124, 124, 124, 0.22);
+}
+
+.user-login h2 {
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.user-login form {
+    /* background-color: beige; */
+    padding: 2rem;    
+    padding-top: 0;
+}
+
+form input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form .login-validation {
+    text-align: left;
+    margin-bottom: 0;  
+    color: #d93025; /* error red */
+    font-size: 0.75rem;
+}
+
+form button {
+    padding: 0.5rem 0.75rem;
+    margin-top: 1rem;
+    width: 100%;
+    background-color: #0978c8;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+  }
+  
