@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { LogoutButton } from "./Button";
 import "../styles/NavBar.style.css";
 
 export const NavBar = () => {
@@ -8,7 +7,7 @@ export const NavBar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
-    navigate("/login");
+    navigate("/signin");
   };
 
   return (
@@ -28,7 +27,7 @@ export const NavBar = () => {
             
           </>
         ) : (
-          <Link to="/login">Signin</Link>
+          <Link to="/signin">Signin</Link>
         )}
       </div>
     </nav>

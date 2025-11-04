@@ -21,6 +21,7 @@ export const DataTable = (props: any) => {
   const { userList } = props;
 
   return (
+    <div style={{margin: '1rem'}}>
     <Paper>
       <DataGrid 
         rows={userList}
@@ -29,5 +30,7 @@ export const DataTable = (props: any) => {
         pageSizeOptions={[5,10, 15, 20]}
       ></DataGrid>
     </Paper>
+
+    </div>
   )
 };

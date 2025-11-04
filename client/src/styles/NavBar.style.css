@@ -23,3 +23,18 @@
     
 }
 
+.navbar button {
+    margin-top: 1rem;
+    margin: 0.5rem 0.75rem;
+    background-color: #0978c8;
+    border: none;
+    color: #EDF6F9;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navbar button:hover {
+    text-decoration: underline;
+}
+
