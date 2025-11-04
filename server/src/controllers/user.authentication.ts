@@ -11,7 +11,7 @@ const REFRESH_KEY = process.env.REFRESH_TOKEN_SECRET || "myRefresh" as string;
 
 const userRepo = AppDataSource.getRepository(User);
 
-export const loginUser = async (req: Request, res: Response) => {
+export const signinUser = async (req: Request, res: Response) => {
     const { email } = req.body;
 
     try {
