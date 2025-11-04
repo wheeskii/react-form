@@ -6,6 +6,7 @@ type JWTPayload = {
   email: string;
 };
 
+// export const loginUser = async (email: string, navigate?:(path: string) => void) => {
 export const loginUser = async (email: string) => {
     const { data } = await axiosInstance.post("/signin", { email });
     
@@ -13,9 +14,18 @@ export const loginUser = async (email: string) => {
     localStorage.setItem("refreshToken", data.refreshToken);
 
     const decoded = jwtDecode<JWTPayload>(data.accessToken);
-    const expiresAt = decoded.exp * 1000;
+    const expiry = decoded.exp * 1000;
+    const expiresAt = expiry - Date.now();
 
-    localStorage.setItem("tokenExpiry", expiresAt.toString());
+    console.log("Access token expires in:", Math.round(expiresAt / 1000), "seconds");
+    localStorage.setItem("tokenExpiry", expiry.toString());
+
+    // auto logout when access token expires
+    // setTimeout(() => {
+    //   alert("Session expired. Logging out...");
+    //   localStorage.clear();
+    //   if (navigate) navigate("/");
+    // }, expiresAt);
 
     return data.user;
 };
