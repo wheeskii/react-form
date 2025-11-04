@@ -1,0 +1,50 @@
+form {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    font-family: Arial, sans-serif;
+}
+
+label {
+display: block;
+text-align: left;
+font-weight: 600;
+padding: 0.5rem 0;
+color: #333;
+}
+  
+p {
+    text-align: right;
+    color: #d93025;
+    font-size: 0.75rem;
+}
+
+input, select{
+width: 100%;
+box-sizing: border-box;
+padding: 0.5rem 0.75rem;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 1rem;
+
+}
+
+form button {
+padding: 0.6rem 1.2rem;
+margin-top: 1.2rem;
+background-color: #007bff;
+border: none;
+color: white;
+width: 100%;
+font-size: medium;
+border-radius: 4px;
+cursor: pointer;
+
+}
+  
+form button:hover {
+background-color: #0056b3;
+}
