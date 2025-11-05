@@ -108,5 +108,6 @@ export const deleteUserByID = async (req: Request, res: Response) => {
             success: false,
             message: "Error delete user: ", error
         });
-    }
+    };
 }
+

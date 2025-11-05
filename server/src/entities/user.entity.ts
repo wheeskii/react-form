@@ -1,9 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
-// export const Course = {
-//     IT: "Information Technology",
-//     COMPSCI: "Computer Science"
-// } as const;
 
 
 export const Course = {

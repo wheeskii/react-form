@@ -13,17 +13,28 @@ function Navigation() {
         {/* Public route */}
         <Route path="/" element={<LoginPage />} />
         <Route path="/signin" element={<LoginPage />} />
-        <Route path="/create" element={<UserForm />}></Route>
         {/* Protected routes */}
-        <Route
-          path="/users"
-          element={
+        <Route path="/users" element={
             <ProtectedRoute>
               <UserList />
             </ProtectedRoute>
+            //   <UserForm />
           }
         />
+        <Route path='/create' element= {
+          <ProtectedRoute>
+              <UserForm />
+            </ProtectedRoute>
+          } 
+        />
+        <Route path='/edit/:id' element= {
+          <ProtectedRoute>
+              <UserForm />
+            </ProtectedRoute>
+          } 
+        />
       </Routes>
+      
     </Router>
   );
 }

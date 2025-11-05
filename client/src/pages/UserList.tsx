@@ -1,29 +1,43 @@
 import { useEffect, useState } from "react"
 import type { UserType } from "../validator/user.validator" 
-import { getAllUsers } from "../api/fetch.api";
+import { deleteUser, getAllUsers } from "../api/fetch.api";
 import "datatables.net";
 import "datatables.net-dt";
 import "datatables.net-responsive-dt";
 import '../styles/UserList.style.css'
 import { DataTable } from "../components/DataTables";
 
-
-
 export const UserList = () => {
   const [users, setUsers] = useState<UserType[]>([]);
+  
+  
+  const fetchUsers = async () => {
+    try {
+      const res = await getAllUsers();
+      setUsers(res);
+    } catch (err) {
+      console.error("Error fetching users: ", err);
+    };
+  };
+
+  const handleDeleteUser = async (id: number) => {
+    try {
+      await deleteUser(id);
+      await fetchUsers();
+    } catch (err) {
+      console.error(err);
+    };
+  };
+  
 
   useEffect(() => {
-    getAllUsers()
-      .then((data) => {
-        setUsers(data);
-      })
-      .catch(console.error);
+    fetchUsers();
     }, []);
   
   
   return (
     <div className="user-table">
-      <DataTable userList={users} />
+      <DataTable userList={users} deleteUser={handleDeleteUser} />
     </div>
   )
 }

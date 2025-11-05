@@ -1,8 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-// import { zodResolver } from "@hookform/resolvers/zod";
 import type { UserType } from "../validator/user.validator";
-import { getUserByID, updateUserByID } from "../api/fetch.api";
+import { createUser, getUserByID, updateUserByID } from "../api/fetch.api";
 import { useEffect } from "react";
 import '../styles/Form.style.css'
 
@@ -14,11 +13,12 @@ export const UserForm = () => {
 
     const onSubmit = async (data: UserType) => {
         try {
+            console.log(data);
             if(id) {
                 await updateUserByID(id, data);
                 alert("User updated!");
             } else {
-                await getUserByID(id)
+                await createUser(data)
                 alert("User created!");
             }
             navigate('/users');
@@ -30,7 +30,7 @@ export const UserForm = () => {
 
     useEffect(() => {
         if (id) {
-          getUserByID(id)
+            getUserByID(id)
             .then(user => reset(user))
             .catch(() => alert('User not found'));
         }
@@ -44,47 +44,47 @@ export const UserForm = () => {
             <div className="entry">
                 <label>Last Name</label>
                 {errors.lastName && <p>{errors.lastName.message}</p>}
+                <input type="text" {...register("lastName")} placeholder="Last Name"/>
             </div>
-            <input type="text" {...register("lastName")} placeholder="Last Name"/>
 
             <div className="entry">
                 <label>First Name</label>
                 {errors.lastName && <p>{errors.lastName.message}</p>}
+                <input type="text" {...register("firstName")} placeholder="First Name"/>
             </div>
-            <input type="text" {...register("firstName")} placeholder="First Name"/>
 
             <div className="entry">
                 <label>Middle Name</label>
                 {errors.lastName && <p>{errors.lastName.message}</p>}
+                <input type="text" {...register("middleName")} placeholder="Middle Name"/>
             </div>
-            <input type="text" {...register("middleName")} placeholder="Middle Name"/>
 
             <div className="entry">
                 <label>Email</label>
                 {errors.email && <p>{errors.email.message}</p>}
+                <input type="email" {...register("email")} placeholder="Email" />
             </div>
-                <input type="email" {...register("email", { required: "Email is required" })} />
 
             <div className="entry">
                 <label>Birthdate</label>
                 {errors.birthdate && <p>{errors.birthdate.message}</p>}
+                <input type="date" {...register("birthdate")} />
             </div>
-                <input type="date" {...register("birthdate", { required: "Birthdate is required" })} />
 
             <div className="entry">
-                <label>Phone Number</label>
+                <label>Contact Number</label>
                 {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
+                <input type="tel" {...register("phoneNumber")} placeholder="Contact number"/>
             </div>
-                <input type="tel" {...register("phoneNumber", { required: "Phone number is required" })} />
 
             <div className="entry">
                 <label>Course</label>
                 {/* {errors.course && <p>{errors.course.message}</p>} */}
+                <select id="courses"{...register("course")} >
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Science">Computer Science</option>
+                </select> 
             </div>
-            <select id="courses"{...register("course")} >
-                <option value="Information Technology">Information Technology</option>
-                <option value="Computer Science">Computer Science</option>
-            </select> 
 
             <button type="submit">{id ? 'Update' : 'Create'} User</button>
 
