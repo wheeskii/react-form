@@ -1,4 +1,3 @@
-// src/utils/refreshAccessToken.ts
 import { axiosInstance } from "../api/axios.config";
 
 export const refreshAccessToken = async (): Promise<string | null> => {

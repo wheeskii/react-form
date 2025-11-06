@@ -3,11 +3,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import type { UserType } from "../validator/user.validator";
 import { createUser, getUserByID, updateUserByID } from "../api/fetch.api";
 import { useEffect } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { userSchema } from "../validator/user.validator";
+import { z } from "zod";
 import '../styles/Form.style.css'
 
 
 export const UserForm = () => {
-    const {register, handleSubmit, reset, formState: { errors }, } = useForm<UserType>();
+    const {register, handleSubmit, reset, formState: { errors }, } = useForm<z.infer<typeof userSchema>>({
+        resolver: zodResolver(userSchema),
+      });
+      
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
 
@@ -44,47 +50,47 @@ export const UserForm = () => {
             <div className="entry">
                 <label>Last Name</label>
                 {errors.lastName && <p>{errors.lastName.message}</p>}
-                <input type="text" {...register("lastName")} placeholder="Last Name"/>
             </div>
+                <input type="text" {...register("lastName")} placeholder="Last Name"/>
 
             <div className="entry">
                 <label>First Name</label>
-                {errors.lastName && <p>{errors.lastName.message}</p>}
-                <input type="text" {...register("firstName")} placeholder="First Name"/>
+                {errors.firstName && <p>{errors.firstName.message}</p>}
             </div>
+                <input type="text" {...register("firstName")} placeholder="First Name"/>
 
             <div className="entry">
                 <label>Middle Name</label>
-                {errors.lastName && <p>{errors.lastName.message}</p>}
-                <input type="text" {...register("middleName")} placeholder="Middle Name"/>
+                {errors.middleName && <p>{errors.middleName.message}</p>}
             </div>
+                <input type="text" {...register("middleName")} placeholder="Middle Name"/>
 
             <div className="entry">
                 <label>Email</label>
                 {errors.email && <p>{errors.email.message}</p>}
-                <input type="email" {...register("email")} placeholder="Email" />
             </div>
+                <input type="email" {...register("email")} placeholder="Email" />
 
             <div className="entry">
                 <label>Birthdate</label>
                 {errors.birthdate && <p>{errors.birthdate.message}</p>}
-                <input type="date" {...register("birthdate")} />
             </div>
+                <input type="date" {...register("birthdate")} />
 
             <div className="entry">
                 <label>Contact Number</label>
                 {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
-                <input type="tel" {...register("phoneNumber")} placeholder="Contact number"/>
             </div>
+                <input type="tel" {...register("phoneNumber")} placeholder="Contact number"/>
 
             <div className="entry">
                 <label>Course</label>
                 {/* {errors.course && <p>{errors.course.message}</p>} */}
+            </div>
                 <select id="courses"{...register("course")} >
                     <option value="Information Technology">Information Technology</option>
                     <option value="Computer Science">Computer Science</option>
                 </select> 
-            </div>
 
             <button type="submit">{id ? 'Update' : 'Create'} User</button>
 

@@ -1,18 +1,16 @@
-table.dataTable {
-    border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-  }
+
+button {
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
   
-  .dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: 5px 10px;
-    border-radius: 5px;
-    background: #007bff;
-    color: white !important;
-    margin: 2px;
-  }
-  
-  .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background: #0056b3 !important;
-  }
+  font-size: medium;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}

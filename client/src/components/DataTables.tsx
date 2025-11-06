@@ -1,6 +1,7 @@
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import { Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
+import '../styles/UserList.style.css';
 
 export const DataTable = ({ userList, deleteUser }: any) => {
 
@@ -13,8 +14,10 @@ export const DataTable = ({ userList, deleteUser }: any) => {
     { field: 'birthdate', headerName: "Birth Date", width: 150 },
     { field: 'email', headerName: "Email", width: 200 },
     { field: 'course', headerName: "Course", width: 200 },
-    { field: "edit", headerName: "Edit", width: 100,
-      renderCell: (params) => ( <Link to={`/edit/${params.row.id}`}>Edit</Link>),
+    { field: "edit", headerName: "Edit", width: 100, cellClassName: 'edit-btn',
+      renderCell: (params) => ( 
+      <button><Link to={`/edit/${params.row.id}`}>Edit</Link></button>
+      ),
     },
     { field: "delete", headerName: "Delete", width: 150, 
       renderCell: (params) => (

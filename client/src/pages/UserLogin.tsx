@@ -18,6 +18,7 @@ export const LoginPage = () => {
             // const user = await loginUser(data.email, navigate)
             const user = await loginUser(data.email)
             console.log("Logged in user:", user);
+            console.log(Date());
             navigate("/users");
           } catch (error: any) {
             console.error("Login failed:", error);
