@@ -38,15 +38,15 @@ export const refreshToken = async (req: Request, res: Response) => {
         email: user.email,
       });
 
-      const newRefreshToken = generateRefreshToken({
-        id: user.id,
-        email: user.email,
-      });
+      // const newRefreshToken = generateRefreshToken({
+      //   id: user.id,
+      //   email: user.email,
+      // });
 
-      res.cookie("refreshToken", newRefreshToken, {
-        httpOnly: true,
-        secure: true,
-      });
+      // res.cookie("refreshToken", newRefreshToken, {
+      //   httpOnly: true,
+      //   secure: true,
+      // });
 
       return res.status(200).json({
         success: true,

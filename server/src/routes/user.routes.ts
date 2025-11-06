@@ -3,7 +3,7 @@ import { addNewUser, deleteUserByID, getAllUsers, getUserByID, updateUser} from 
 import { signinUser } from "../controllers/user.authentication";
 import { userSchema, userUpdateSchema } from "../validator/user.validator";
 import { validate } from "../middleware/validation.middleware";
-import { verifyJWT } from "../middleware/verify.JWT";
+
 import { refreshToken } from "../controllers/user.refreshToken";
 
 const router = Router();
