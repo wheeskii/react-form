@@ -11,7 +11,7 @@
 .navbar-title h2 {
     font-weight: 600;
 }
-/* #646cff */
+
 .navbar a {
     margin-left: 1rem;
     text-decoration: none;
@@ -20,7 +20,6 @@
 
 .navbar a:hover {
     text-decoration: underline;
-    
 }
 
 .navbar button {
