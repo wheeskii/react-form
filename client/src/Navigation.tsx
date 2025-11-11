@@ -9,16 +9,15 @@ function Navigation() {
   return (
     <Router>
       <NavBar />
+
       <Routes>
-        {/* Public route */}
         <Route path="/" element={<LoginPage />} />
         <Route path="/signin" element={<LoginPage />} />
-        {/* Protected routes */}
+        
         <Route path="/users" element={
             <ProtectedRoute>
               <UserList />
             </ProtectedRoute>
-            //   <UserForm />
           }
         />
         <Route path='/create' element= {
