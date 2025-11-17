@@ -32,51 +32,30 @@ const refreshAccessToken = async () => {
 };
 
 axiosInstance.interceptors.request.use(async (config) => {
+  
+  if (config.url === "/refresh") return config;
+
   let token = localStorage.getItem("accessToken");
 
-  if (token) {
-    if (isTokenExpired(token)) {
-      console.log("⚠️ Access token is expired: ", token)
-      console.log("Time: ", Date());
-      try {
-          token = await refreshAccessToken();
-          console.log(`✅ New Access Token: ${token}`)
-          console.log("Time: ", Date());
-        } catch (error) {
-          console.error("🛑 Refresh token failed:", error);
-          localStorage.clear();
-          window.location.href = "/";
-          // throw error;
-        }
+  if (token && isTokenExpired(token)) {
+    try {
+      console.log("Access token expired, refreshing...");
+      token = await refreshAccessToken();
+      console.log("Refreshed token:", token);
+    } catch (error) {
+      alert("Session expired. Redirecting to login page...")
+      console.error("Refresh token expired:", error);
+      localStorage.clear();
+      window.location.href = "/";
+      return Promise.reject(error);
     }
+  }
+
+  if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
 
   return config;
 });
 
-// axiosInstance.interceptors.request.use(async (config) => {
-//   let token = localStorage.getItem("accessToken");
-
-//   if (token) {
-//     const now = new Date();
-//     if (isTokenExpired(token)) {
-//       console.log("⚠️ Access token is expired: ", token)
-//       console.log("Time: ", now);
-//       try {
-//         token = await refreshAccessToken();
-//         console.log(`✅ New Access Token: ${token}`)
-//         console.log("Time: ", now);
-//       } catch (error) {
-//         console.error("🛑 Refresh token failed:", error);
-//         localStorage.clear();
-//         window.location.href = "/";
-//         // throw error;
-//       }
-//     }
-//     config.headers.Authorization = `Bearer ${token}`;
-//   };
-
-//   return config;
-// });
 
