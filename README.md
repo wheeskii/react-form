@@ -22,8 +22,8 @@ This repo is intended for practicing:
 - Basic validation
 
 ## Screenshots
-![Singin Page](/Users/da/Desktop/jwt/react-form/screenshots/react-form_email-signin.png)
-![Data Table](/Users/da/Desktop/jwt/react-form/screenshots/react-form_data-table.png)
-![Edit Page](/Users/da/Desktop/jwt/react-form/screenshots/react-form_edit.png)
-![Validation](/Users/da/Desktop/jwt/react-form/screenshots/react-form_validation.png)
+![Singin Page](/react-form/main/screenshots/react-form_email-signin.png)
+![Data Table](/react-form/main/screenshots/react-form_data-table.png)
+![Edit Page](/react-form/main/screenshots/react-form_edit.png)
+![Validation](/react-form/main/react-form/screenshots/react-form_validation.png)
 
