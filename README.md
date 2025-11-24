@@ -22,8 +22,8 @@ This repo is intended for practicing:
 - Basic validation
 
 ## Screenshots
-![Singin Page](https://github.com/wheeskii/react-form/blob/main/screenshots/react-form_email-signin.png)
-![Data Table](https://github.com/wheeskii/react-form/blob/main/screenshots/react-form_data-table.png)
-![Edit Page](https://github.com/wheeskii/react-form/blob/main/screenshots/react-form_edit.png)
-![Validation](https://github.com/wheeskii/react-form/blob/main/screenshots/react-form_validation.png)
+![Singin Page](/screenshots/react-form_email-signin.png "Email Sign in page")
+![Data Table](/screenshots/react-form_data-table.png "Data Table")
+![Edit Page](/screenshots/react-form_edit.png "Edit Page")
+![Validation](/screenshots/react-form_validation.png "Validation")
 
