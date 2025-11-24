@@ -6,8 +6,11 @@ dotenv.config();
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN_SECRET;
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN_SECRET;
 
-const ACCESS_TOKEN_EXPIRY = '60s';
-const REFRESH_TOKEN_EXPIRY = '5m';
+// test
+// const ACCESS_TOKEN_EXPIRY = '60s';
+// const REFRESH_TOKEN_EXPIRY = '5m';
+const ACCESS_TOKEN_EXPIRY = '15m';
+const REFRESH_TOKEN_EXPIRY = '7d';
 
 
 export const generateAccessToken = (user: any) => {

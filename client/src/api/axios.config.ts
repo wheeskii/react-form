@@ -41,7 +41,7 @@ axiosInstance.interceptors.request.use(async (config) => {
     try {
       console.log("Access token expired, refreshing...");
       token = await refreshAccessToken();
-      console.log("Refreshed token:", token);
+      console.log("Refreshed access token:", token);
     } catch (error) {
       alert("Session expired. Redirecting to login page...")
       console.error("Refresh token expired:", error);
