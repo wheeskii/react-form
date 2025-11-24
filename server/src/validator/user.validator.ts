@@ -7,9 +7,10 @@ export const userSchema = z.object({
     id: z.number().optional(),
     lastName: z.string().min(1, "Required!"),
     firstName: z.string().min(1, "Required!"),
-    middleName: z.string().min(1, "Required!"),
+    middleName: z.string().optional(),
     email: z.email("Invalid email address!"),
-    birthdate: z.coerce.date(),
+    birthdate: z.string().min(1, "Birthdate is required!")
+                .refine((val) => !isNaN(new Date(val).getTime()), "Invalid birthdate!"),
     phoneNumber: z.string().regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
     course: z.enum(courses, "Please choose between [Computer Science] [Information Technology]"),
 
