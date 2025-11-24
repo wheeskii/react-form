@@ -20,3 +20,10 @@ This repo is intended for practicing:
 - React form handling
 - Sending data to an Express backend
 - Basic validation
+
+## Screenshots
+![Singin Page](/Users/da/Desktop/jwt/react-form/screenshots/react-form_email-signin.png)
+![Data Table](/Users/da/Desktop/jwt/react-form/screenshots/react-form_data-table.png)
+![Edit Page](/Users/da/Desktop/jwt/react-form/screenshots/react-form_edit.png)
+![Validation](/Users/da/Desktop/jwt/react-form/screenshots/react-form_validation.png)
+
